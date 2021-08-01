@@ -1,0 +1,12 @@
+you 2
+are 1
+done 1
+when 0
+store 2
+information 4
+in 2
+file 3
+on 1
+it 1
+perform 1
+processing 2

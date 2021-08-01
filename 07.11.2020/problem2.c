@@ -1,0 +1,69 @@
+#include<stdio.h>
+#include<string.h>
+
+int main()
+{
+    char s1[505],s2[505],s3[15];
+    gets(s1);
+    gets(s2);
+    gets(s3);
+    int l1=strlen(s1),l2=strlen(s2),l3=strlen(s3),c[100],count=0,in=0,i,j=0,k,f=1,d;
+    for(i=0;s1[i]!='\0';)
+    {
+        if(s1[i]==s2[j])
+        {
+            for(j=1,k=i+1;s2[j]!='\0';j++,k++)
+            {
+                if(s1[k]!=s2[j])
+                {
+                    f=0;
+                    break;
+                }
+            }
+            if(f==1)
+            {
+                count++;
+                c[in++]=i;
+                j=0;
+                i+=l2;
+            }
+            else
+            {
+                j=0;
+                i++;
+                f=1;
+            }
+        }
+        else
+            i++;
+    }
+    for(i=0;i<count;i++)
+    {
+        if(l3>l2)
+        {
+            d=l3-l2;
+            for(j=l1+d-1;j>=c[i]+l3+i*d;j--)
+            {
+                s1[j]=s1[j-d];
+            }
+            s1[l1+d]='\0';
+            l1+=d;
+             for(j=c[i]+i*d,k=0;s3[k]!='\0';k++,j++)
+                s1[j]=s3[k];
+        }
+        else if(l2>l3)
+        {
+             for(j=c[i]-i*d,k=0;s3[k]!='\0';k++,j++)
+                s1[j]=s3[k];
+            d=l2-l3;
+            for(j=c[i]+l3-i*d;j<l1-d;j++)
+            {
+                s1[j]=s1[j+d];
+            }
+            s1[l1-d]='\0';
+            l1-=d;
+        }
+
+    }
+    puts(s1);
+}
